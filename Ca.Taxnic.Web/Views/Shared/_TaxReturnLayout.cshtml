@@ -1,0 +1,617 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="top menu &amp; navigation" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>@ViewBag.Title </title>  
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/ace")
+    @RenderSection("scripts", required: false)   
+
+</head>
+
+<body class="no-skin">
+    <!-- #section:basics/navbar.layout -->
+    <div id="navbar" class="navbar navbar-default">
+        <script type="text/javascript">
+            try { ace.settings.check('navbar', 'fixed') } catch (e) { }
+        </script>
+
+        <div class="navbar-container container" id="navbar-container">
+            <div class="navbar-header pull-left">
+                <!-- #section:basics/navbar.layout.brand -->
+                <a href="#" class="navbar-brand">
+                    <small>
+                        <i class="fa fa-cubes"></i>
+                        Taxnic Pro
+                    </small>
+                </a>
+
+                <!-- /section:basics/navbar.layout.brand -->
+                <!-- #section:basics/navbar.toggle -->
+                <button class="pull-right navbar-toggle navbar-toggle-img collapsed" type="button" data-toggle="collapse" data-target=".navbar-buttons,.navbar-menu">
+                    <span class="sr-only">Toggle user menu</span>
+
+                    <img src="../content/avatars/user.jpg" alt="Jason's Photo" />
+                </button>
+
+                <button class="pull-right navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".sidebar">
+                    <span class="sr-only">Toggle sidebar</span>
+
+                    <span class="icon-bar"></span>
+
+                    <span class="icon-bar"></span>
+
+                    <span class="icon-bar"></span>
+                </button>
+
+                <!-- /section:basics/navbar.toggle -->
+            </div>
+
+            <!-- #section:basics/navbar.dropdown -->
+            <div class="navbar-buttons navbar-header pull-right  collapse navbar-collapse" role="navigation">
+                <ul class="nav ace-nav">
+
+                    @Html.Partial("_LoginPartial")
+
+                    <!-- #section:basics/navbar.user_menu -->
+                    <li class="light-blue user-min">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                            <img class="nav-user-photo" src="../content/avatars/user.jpg" alt="Jason's Photo" />
+                            <span class="user-info">
+                                <small>Welcome,</small>
+                                Jason
+                            </span>
+
+                            <i class="ace-icon fa fa-caret-down"></i>
+                        </a>
+
+                        <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                            <li>
+                                <a href="#">
+                                    <i class="ace-icon fa fa-cog"></i>
+                                    Settings
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="profile.html">
+                                    <i class="ace-icon fa fa-user"></i>
+                                    Profile
+                                </a>
+                            </li>
+
+                            <li class="divider"></li>
+
+                            <li>
+                                <a href="#">
+                                    <i class="ace-icon fa fa-power-off"></i>
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- /section:basics/navbar.user_menu -->
+                </ul>
+            </div>
+
+            <!-- /section:basics/navbar.dropdown -->
+            <nav role="navigation" class="navbar-menu pull-right collapse navbar-collapse">
+                <!-- #section:basics/navbar.nav -->
+                <!-- /section:basics/navbar.nav -->
+                <!-- #section:basics/navbar.form -->
+
+                <form class="navbar-form navbar-left form-search" role="search">
+                    <div class="form-group">
+                        <input type="text" placeholder="search" style="width: 300px;" />
+                    </div>
+
+                    <button type="button" class="btn btn-xs btn-info2">
+                        <i class="ace-icon fa fa-search icon-only bigger-110"></i>
+                    </button>
+                </form>
+
+            </nav>
+        </div><!-- /.navbar-container -->
+    </div>
+
+    <!-- /section:basics/navbar.layout -->
+    <div class="main-container container" id="main-container">
+        <script type="text/javascript">
+            try { ace.settings.check('main-container', 'fixed') } catch (e) { }
+        </script>
+
+        <!-- #section:basics/sidebar -->
+        <div id="sidebar" class="sidebar                  responsive">
+            <script type="text/javascript">
+                try { ace.settings.check('sidebar', 'fixed') } catch (e) { }
+            </script>
+
+            <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+                <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+                    <button class="btn btn-success">
+                        <i class="ace-icon fa fa-signal"></i>
+                    </button>
+
+                    <button class="btn btn-info">
+                        <i class="ace-icon fa fa-pencil"></i>
+                    </button>
+
+                    <!-- #section:basics/sidebar.layout.shortcuts -->
+                    <button class="btn btn-warning">
+                        <i class="ace-icon fa fa-users"></i>
+                    </button>
+
+                    <button class="btn btn-danger">
+                        <i class="ace-icon fa fa-cogs"></i>
+                    </button>
+
+                    <!-- /section:basics/sidebar.layout.shortcuts -->
+                </div>
+
+                <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+                    <span class="btn btn-success"></span>
+
+                    <span class="btn btn-info"></span>
+
+                    <span class="btn btn-warning"></span>
+
+                    <span class="btn btn-danger"></span>
+                </div>
+            </div><!-- /.sidebar-shortcuts -->
+
+            <ul class="nav nav-list">          
+
+                @if (ViewBag.Title == "Identification" || ViewBag.Title == "Carry Over" || ViewBag.Title == "Tax Assessment" || ViewBag.Title == "Upload Slips" || ViewBag.Title == "Form T1013" ||
+                    ViewBag.Title == "Form T183" || ViewBag.Title == "Carry Forward" || ViewBag.Title == "T1 Adjustment")
+                {
+                    @Html.Raw("<li class=\"active open\">");
+                }
+                else
+                {
+                    @Html.Raw("<li class=\"\">");
+                }
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-desktop"></i>
+                        <span class="menu-text"> Tax Profile </span>
+
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+
+                    <b class="arrow"></b>
+
+                    <ul class="submenu">
+                        @if (ViewBag.Title == "Identification")
+                        {
+                            @Html.Raw("<li class=\"active\">");
+                        }
+                        else
+                        {
+                            @Html.Raw("<li class=\"\">");
+                        }
+                            <a href="/TaxProfile/">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Identification
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+                       
+                        @if (ViewBag.Title == "Carry Over")
+                        {
+                            @Html.Raw("<li class=\"active\">");
+                        }
+                        else
+                        {
+                            @Html.Raw("<li class=\"\">");
+                        }
+                            <a href="/TaxProfile/CarryOver">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Carry Over 
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        @if (ViewBag.Title == "Tax Assessment")
+                        {
+                            @Html.Raw("<li class=\"active\">");
+                        }
+                        else
+                        {
+                            @Html.Raw("<li class=\"\">");
+                        }
+                            <a href="/TaxProfile/TaxAssessment">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Last Year Tax Assessment
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        @if (ViewBag.Title == "Upload Slips")
+                        {
+                            @Html.Raw("<li class=\"active\">");
+                        }
+                        else
+                        {
+                            @Html.Raw("<li class=\"\">");
+                        }
+                            <a href="/TaxProfile/UploadSlips">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Upload Slips and Receipts
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        @if (ViewBag.Title == "Form T1013")
+                        {
+                            @Html.Raw("<li class=\"active\">");
+                        }
+                        else
+                        {
+                            @Html.Raw("<li class=\"\">");
+                        }
+                            <a href="/TaxProfile/FormT1013">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Form T1013
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        @if (ViewBag.Title == "Form T183")
+                        {
+                            @Html.Raw("<li class=\"active\">");
+                        }
+                        else
+                        {
+                            @Html.Raw("<li class=\"\">");
+                        }
+                            <a href="/TaxProfile/FormT183">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Form T183
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        @if (ViewBag.Title == "Carry Forward")
+                        {
+                            @Html.Raw("<li class=\"active\">");
+                        }
+                        else
+                        {
+                            @Html.Raw("<li class=\"\">");
+                        }
+                            <a href="/TaxProfile/CarryForward">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Carry Forward
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        @if (ViewBag.Title == "T1 Adjustment")
+                        {
+                            @Html.Raw("<li class=\"active\">");
+                        }
+                        else
+                        {
+                            @Html.Raw("<li class=\"\">");
+                        }
+                            <a href="/TaxProfile/T1Adjustment">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                T1 Adjustment
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>                        
+                    </ul>
+                </li>
+
+                <li class="">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-list"></i>
+                        <span class="menu-text"> Tax Slips </span>
+
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+
+                    <b class="arrow"></b>
+
+                    <ul class="submenu">
+                        <li class="">
+                            <a href="/TaxSlips/">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Tax Slip List
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+                        <li class="">
+                            <a href="/TaxSlips/AddSlip">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Add Tax Slip
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>                       
+                    </ul>
+                </li>
+
+                <li class="">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-pencil-square-o"></i>
+                        <span class="menu-text"> Total Income </span>
+
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+
+                    <b class="arrow"></b>
+
+                    <ul class="submenu">
+                        <li class="">
+                            <a href="/TotalIncome/">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Income Sumamry
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li class="">
+                            <a href="/TotalIncome/ReportIncome">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Report Income
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-pencil-square-o"></i>
+                        <span class="menu-text"> Deductions </span>
+
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+
+                    <b class="arrow"></b>
+
+                    <ul class="submenu">
+                        <li class="">
+                            <a href="/Deductions/">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Deduxtion Summary
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li class="">
+                            <a href="/Deductions/ClaimDeduction">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Claim Deduction
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-pencil-square-o"></i>
+                        <span class="menu-text"> Federal Tax Credit </span>
+
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+
+                    <b class="arrow"></b>
+
+                    <ul class="submenu">
+                        <li class="">
+                            <a href="/FederalCredit/">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Federal Tax Credit Summary
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li class="">
+                            <a href="/FederalCredit/ClaimFederalCredit">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Claim Federal Tax Credit
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-pencil-square-o"></i>
+                        <span class="menu-text"> Provincial Tax Credit </span>
+
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+
+                    <b class="arrow"></b>
+
+                    <ul class="submenu">
+                        <li class="">
+                            <a href="/ProvincialCredit/">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Provincial Tax Credit Summary
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li class="">
+                            <a href="/ProvincialCredit/ClaimProvincialCredit">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Claim Provincial Tax Credit
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-pencil-square-o"></i>
+                        <span class="menu-text"> Calculate </span>
+
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+
+                    <b class="arrow"></b>
+
+                    <ul class="submenu">
+                        <li class="">
+                            <a href="/Calculate/">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Tax Return Summary
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li class="">
+                            <a href="/Calculate/PrintForms">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Print Tax Forms
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+                        <li class="">
+                            <a href="/Calculate/FileReturn">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                File Tax Return
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
+                
+            </ul><!-- /.nav-list -->
+            
+        </div>
+
+        <!-- /section:basics/sidebar -->
+        <div class="main-content">
+            <!-- #section:basics/content.breadcrumbs -->
+            <div class="breadcrumbs" id="breadcrumbs">
+                <script type="text/javascript">
+                    try { ace.settings.check('breadcrumbs', 'fixed') } catch (e) { }
+                </script>
+
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="ace-icon fa fa-home home-icon"></i>
+                        <a href="/">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="/TaxReturn/">Tax Return Manager</a>
+                    </li>
+                    <li class="active">@ViewBag.Title</li>
+                </ul><!-- /.breadcrumb -->              
+            </div>
+
+            <!-- /section:basics/content.breadcrumbs -->
+            <div class="page-content">              
+                <div class="page-content-area">
+
+                    @RenderBody()
+
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content-area -->
+    </div><!-- /.page-content -->
+        </div><!-- /.main-content -->
+
+        <div class="footer">
+            <div class="footer-inner">
+                <!-- #section:basics/footer -->
+                <div class="footer-content">
+                    <span class="bigger">
+                        <span class="blue bolder">Taxnic Software Systems</span> &copy; 2005-2014
+                    </span>
+
+                    &nbsp; &nbsp;
+                    <span class="action-buttons">
+                        <a href="#">
+                            <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="ace-icon fa fa-rss-square orange bigger-150"></i>
+                        </a>
+                    </span>
+                </div>
+
+                <!-- /section:basics/footer -->
+            </div>
+        </div>
+
+        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+            <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+        </a>
+    </div><!-- /.main-container -->
+    <!-- basic scripts -->
+    <!--[if !IE]> -->
+    <script type="text/javascript">
+        //window.jQuery || document.write("<script src='../Content/js/jquery.min.js'>" + "<" + "/script>");
+    </script>
+
+    <!-- <![endif]-->
+    <!--[if IE]>
+    <script type="text/javascript">
+     window.jQuery || document.write("<script src='../assets/js/jquery1x.min.js'>"+"<"+"/script>");
+    </script>
+    <![endif]-->
+    <script type="text/javascript">
+        if ('ontouchstart' in document.documentElement) document.write("<script src='../Content/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+    </script>
+   
+    <!-- page specific plugin scripts -->
+    <!-- ace scripts -->
+    <script src="../Content/js/fuelux/fuelux.wizard.min.js"></script>
+    <script src="../Content/js/jquery.validate.min.js"></script>
+    <script src="../Content/js/additional-methods.min.js"></script>
+    <script src="../Content/js/bootbox.min.js"></script>
+    <script src="../Content/js/jquery.maskedinput.min.js"></script>
+    <script src="../Content/js/select2.min.js"></script>
+
+    <!-- inline scripts related to this page -->
+    <!-- the following scripts are used in demo only for onpage help and you don't need them -->
+    <link rel="stylesheet" href="../Content/css/ace.onpage-help.css" />
+
+    <script type="text/javascript"> ace.vars['base'] = '..'; </script>
+    <script src="../Content/js/ace/elements.onpage-help.js"></script>
+    <script src="../Content/js/ace/ace.onpage-help.js"></script>
+</body>
+</html>
